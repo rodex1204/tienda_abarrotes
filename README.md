@@ -1,4 +1,4 @@
-# Aplicación web para tiendas de abarrotes | Node.js, Firebase, SOA, Docker
-* Sistema web para la gestión de tiendas de abarrotes, permitiendo administrar productos, inventario y ventas.
-* Implementación de arquitectura basada en servicios (SOA) con operaciones CRUD y actualización de datos en tiempo real.
-* Incluye panel administrativo y vista de usuario, con despliegue utilizando Docker e integración con Firebase.
+# Sistema de gestión | Node.js, Express,Firebase (Auth, Firestore), Docker
+* Sistema web para la gestión de tiendas de abarrotes, enfocado en la administración de productos, inventario y ventas.
+* Desarrollado bajo una arquitectura orientada a servicios (SOA), con implementación de operaciones CRUD y sincronización de datos en tiempo real.
+* Cuenta con panel administrativo y vista de usuario, integración de autenticación mediante Firebase Authentication y despliegue utilizando Docker.
