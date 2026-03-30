@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>💳 Planes de Suscripción - Tu Tienda SaaS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .planes-container {
+      min-height: 100vh;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .planes-header {
+      text-align: center;
+      margin-bottom: 60px;
+      color: white;
+    }
+
+    .planes-header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .planes-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .planes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .plan-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .plan-card.popular {
+      border: 3px solid #3498db;
+      transform: scale(1.05);
+    }
+
+    .plan-card.popular::before {
+      content: "Más Popular";
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: #3498db;
+      color: white;
+      padding: 8px 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transform: rotate(45deg);
+    }
+
+    .plan-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .plan-price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #3498db;
+      margin-bottom: 5px;
+    }
+
+    .plan-period {
+      color: #7f8c8d;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .plan-features li {
+      padding: 12px 0;
+      border-bottom: 1px solid #ecf0f1;
+      color: #34495e;
+      font-weight: 500;
+    }
+
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+
+    .plan-features li::before {
+      content: "✅";
+      margin-right: 10px;
+    }
+
+    .plan-button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .plan-button.primary {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+    }
+
+    .plan-button.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4);
+    }
+
+    .plan-button.secondary {
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
+      color: white;
+      box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+    }
+
+    .plan-button.secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(39, 174, 96, 0.4);
+    }
+
+    .plan-button.outline {
+      background: transparent;
+      color: #3498db;
+      border: 2px solid #3498db;
+    }
+
+    .plan-button.outline:hover {
+      background: #3498db;
+      color: white;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .back-link a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .back-link a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .planes-header h1 {
+        font-size: 2rem;
+      }
+      
+      .plan-card {
+        padding: 30px 20px;
+      }
+      
+      .plan-card.popular {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="planes-container">
+    <div class="planes-header">
+      <h1>Elige tu Plan</h1>
+      <p>Selecciona el plan que mejor se adapte a tu negocio</p>
+    </div>
+
+         <div class="planes-grid">
+       <div class="plan-card">
+         <div class="plan-name">Gratuito</div>
+         <div class="plan-price">$0</div>
+         <div class="plan-period">para siempre</div>
+         <ul class="plan-features">
+           <li>Hasta 10 productos</li>
+           <li>Hasta 50 ventas/mes</li>
+           <li>Reportes básicos</li>
+           <li>Soporte comunitario</li>
+           <li>1 usuario</li>
+         </ul>
+         <button class="plan-button outline" onclick="seleccionarPlan('gratuito', 0)">
+           Comenzar Gratis
+         </button>
+       </div>
+
+       <div class="plan-card">
+         <div class="plan-name">Básico</div>
+         <div class="plan-price">$29</div>
+         <div class="plan-period">por mes</div>
+         <ul class="plan-features">
+           <li>Hasta 100 productos</li>
+           <li>Ventas ilimitadas</li>
+           <li>Reportes básicos</li>
+           <li>Soporte por email</li>
+           <li>1 usuario</li>
+         </ul>
+         <button class="plan-button outline" onclick="seleccionarPlan('basico', 29)">
+           Seleccionar Plan
+         </button>
+       </div>
+
+       <div class="plan-card popular">
+         <div class="plan-name">Profesional</div>
+         <div class="plan-price">$79</div>
+         <div class="plan-period">por mes</div>
+         <ul class="plan-features">
+           <li>Hasta 500 productos</li>
+           <li>Ventas ilimitadas</li>
+           <li>Reportes avanzados</li>
+           <li>Soporte prioritario</li>
+           <li>Hasta 3 usuarios</li>
+           <li>Integración con APIs</li>
+         </ul>
+         <button class="plan-button primary" onclick="seleccionarPlan('profesional', 79)">
+           Seleccionar Plan
+         </button>
+       </div>
+
+       <div class="plan-card">
+         <div class="plan-name">Empresarial</div>
+         <div class="plan-price">$199</div>
+         <div class="plan-period">por mes</div>
+         <ul class="plan-features">
+           <li>Productos ilimitados</li>
+           <li>Ventas ilimitadas</li>
+           <li>Reportes personalizados</li>
+           <li>Soporte 24/7</li>
+           <li>Usuarios ilimitados</li>
+           <li>API completa</li>
+           <li>White-label</li>
+         </ul>
+         <button class="plan-button secondary" onclick="seleccionarPlan('empresarial', 199)">
+           Seleccionar Plan
+         </button>
+       </div>
+     </div>
+
+    <div class="back-link">
+      <a href="/">← Volver al inicio</a>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+  
+  <script>
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBT_vLiQr7UEZu2pLyAz2WZzIe8u_FTPhc",
+      authDomain: "proyectoabarrotes-179ea.firebaseapp.com",
+      projectId: "proyectoabarrotes-179ea",
+      storageBucket: "proyectoabarrotes-179ea.appspot.com",
+      messagingSenderId: "1000691717590",
+      appId: "1:1000691717590:web:014babf2ac74fe48258077"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+         function seleccionarPlan(planId, precio) {
+       const userEmail = localStorage.getItem('userEmail');
+       
+       if (!userEmail) {
+         alert('Debes iniciar sesión para seleccionar un plan');
+         window.location.href = '/login';
+         return;
+       }
+
+       // Verificar si ya tiene una suscripción
+       const tenantId = localStorage.getItem('tenantId');
+       if (tenantId) {
+         const confirmar = confirm('Ya tienes una tienda configurada. ¿Quieres cambiar tu plan actual?');
+         if (!confirmar) {
+           window.location.href = '/index.html';
+           return;
+         }
+       }
+
+       // Generar un tenantId único si no existe
+       const newTenantId = tenantId || 'tenant_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+       
+       // Crear suscripción
+       fetch('/api/suscripciones', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({
+           tenantId: newTenantId,
+           planId,
+           email: userEmail,
+           nombreTienda: `Tienda de ${userEmail.split('@')[0]}`
+         })
+       })
+       .then(res => res.json())
+       .then(data => {
+         if (data.success) {
+           // Guardar tenantId en localStorage
+           localStorage.setItem('tenantId', newTenantId);
+           localStorage.setItem('planId', planId);
+           
+           // Crear productos de ejemplo
+           return fetch(`/api/productos-ejemplo/${newTenantId}`, {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({ planId })
+           });
+         } else {
+           throw new Error('Error al crear la suscripción');
+         }
+       })
+       .then(res => res.json())
+       .then(data => {
+         if (data.success) {
+           if (planId === 'gratuito') {
+             alert(`¡Plan gratuito activado! Se crearon ${data.productosCreados} productos de ejemplo. Tu tienda está lista para usar.`);
+           } else {
+             alert(`¡Plan ${planId} seleccionado exitosamente! Se crearon ${data.productosCreados} productos de ejemplo. Tu tienda está lista.`);
+           }
+           window.location.href = '/index.html';
+         } else {
+           alert('Error al crear productos de ejemplo');
+         }
+       })
+       .catch(error => {
+         console.error('Error:', error);
+         alert('Error al procesar la suscripción');
+       });
+     }
+
+     // Verificar si el usuario ya tiene una suscripción al cargar la página
+     document.addEventListener('DOMContentLoaded', function() {
+       const userEmail = localStorage.getItem('userEmail');
+       const tenantId = localStorage.getItem('tenantId');
+       
+       if (userEmail && tenantId) {
+         // Mostrar información de la suscripción actual
+         const planId = localStorage.getItem('planId') || 'gratuito';
+         const planInfo = document.createElement('div');
+         planInfo.style.cssText = `
+           background: rgba(52, 152, 219, 0.1);
+           border: 2px solid #3498db;
+           border-radius: 15px;
+           padding: 20px;
+           margin-bottom: 30px;
+           text-align: center;
+           color: #2c3e50;
+         `;
+         planInfo.innerHTML = `
+           <h3>Tu Plan Actual: ${planId.charAt(0).toUpperCase() + planId.slice(1)}</h3>
+           <p>Email: ${userEmail}</p>
+           <p>Tenant ID: ${tenantId}</p>
+           <button onclick="window.location.href='/index.html'" style="
+             background: #3498db;
+             color: white;
+             border: none;
+             padding: 10px 20px;
+             border-radius: 10px;
+             cursor: pointer;
+             margin-top: 10px;
+           ">Ir a mi Tienda</button>
+         `;
+         
+         const planesHeader = document.querySelector('.planes-header');
+         planesHeader.parentNode.insertBefore(planInfo, planesHeader.nextSibling);
+       }
+     });
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🛒 Tienda de Abarrotes - Compras Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #ddd;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logout-btn {
+      padding: 8px 16px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .logout-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Tienda de Abarrotes</h1>
+    <div class="user-info">
+      <span id="userEmail"></span>
+      <button class="plan-btn" onclick="window.location.href='/planes'" style="
+        background: #27ae60;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      ">💳 Planes</button>
+      <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div id="productos" class="product-grid"></div>
+    
+    <h2>Tu Carrito</h2>
+    <div id="carrito"></div>
+    <button id="finalizar-compra">Finalizar Compra</button>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+  
+  <script src="js/auth.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/carrito.js"></script>
+</body>
+</html>

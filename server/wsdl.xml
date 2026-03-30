@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="TiendaService"
+  targetNamespace="urn:tienda:abarrotes"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:tns="urn:tienda:abarrotes"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <types>
+    <xsd:schema targetNamespace="urn:tienda:abarrotes">
+      <xsd:element name="ObtenerProductosRequest" type="tns:ObtenerProductosRequest"/>
+      <xsd:element name="ObtenerProductosResponse" type="tns:ObtenerProductosResponse"/>
+      
+      <xsd:complexType name="ObtenerProductosRequest">
+        <xsd:sequence/>
+      </xsd:complexType>
+      
+      <xsd:complexType name="ObtenerProductosResponse">
+        <xsd:sequence>
+          <xsd:element name="productos" type="tns:ArrayOfProducto"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="ArrayOfProducto">
+        <xsd:sequence>
+          <xsd:element name="Producto" type="tns:Producto" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="Producto">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="nombre" type="xsd:string"/>
+          <xsd:element name="precio" type="xsd:float"/>
+          <xsd:element name="stock" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+
+  <message name="ObtenerProductosInput">
+    <part name="body" element="tns:ObtenerProductosRequest"/>
+  </message>
+  <message name="ObtenerProductosOutput">
+    <part name="body" element="tns:ObtenerProductosResponse"/>
+  </message>
+
+  <portType name="TiendaPort">
+    <operation name="ObtenerProductos">
+      <input message="tns:ObtenerProductosInput"/>
+      <output message="tns:ObtenerProductosOutput"/>
+    </operation>
+  </portType>
+
+  <binding name="TiendaBinding" type="tns:TiendaPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ObtenerProductos">
+      <soap:operation soapAction="urn:tienda:abarrotes#ObtenerProductos"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="TiendaService">
+    <port name="TiendaPort" binding="tns:TiendaBinding">
+      <soap:address location="http://localhost:5678/wsdl"/>
+    </port>
+  </service>
+</definitions>
